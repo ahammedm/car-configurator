@@ -13,7 +13,7 @@ export const interiorColors = [
 ];
 
 export const interiorLayouts = [
-  { label: "Five seat interior", value: "five_seat", price: 0 },
+  { label: "Five seat interior", value: "five_seat", price: 0 },   
   { label: "Six seat interior", value: "six_seat", price: 6500 },
   { label: "Seven seat interior", value: "seven_seat", price: 3500 },
 ];
