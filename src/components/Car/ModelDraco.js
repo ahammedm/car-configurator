@@ -11,7 +11,7 @@ export default function Model({ bodyColor, wheels, wheelColor, ...props }) {
       //Set Color - Body
       // if (obj.material.name === 'Mt_Body') console.log(obj.name, 'Mt_Body')
       // if (obj.material.name === 'Mt_MirrorCover') console.log(obj.name, 'Mt_MirrorCover')
-      if (obj.material.name === 'Mt_Interior_Black') console.log(obj.name, 'Mt_Interior_Black')
+      // if (obj.material.name === 'Mt_Interior_Black') console.log(obj.name, 'Mt_Interior_Black')
       // if (obj.material.name === 'Mt_AlloyWheels')  console.log(obj.name, 'Mt_AlloyWheels')
       // if (obj.material.name === 'Mt_BrakeCaliper')  console.log(obj.name, 'Mt_BrakeCaliper')
       // if (obj.material.name === 'Mt_Shadow_Plane')  console.log(obj.name, 'Mt_Shadow_Plane')
