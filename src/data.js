@@ -6,6 +6,12 @@ export const colors = [
   { label: "Bianco Monocerus", value: "#F2F3F5", price: 2500 }
 ];
 
+export const wheelColor = [
+  { label: "Black", value: "#000000", price: 0 },
+  { label: "Grey", value: "#4C5457", price: 1500 },
+  { label: "Metalic", value: "#dddddd", price: 1500 }
+];
+
 export const interiorColors = [
   { label: "All black Figured Ash Wood Décor", value: "all_black", price: 0 },
   { label: "Black and white Dark Ash Wood Décor", value: "black_and_white", price: 1500 },
@@ -23,17 +29,18 @@ export const models = [
     key: 's',
     name: "Model S",
     colors: colors,
+    wheelColor: wheelColor,
     wheels: [
       {
-        src: `${process.env.PUBLIC_URL}/wheels/model_s/model_s_wheel_1.png`,
-        label: '19" Tempest Wheels',
-        value: "wheel_1",
+        src: `${process.env.PUBLIC_URL}/aventador/Render_Tyre_0A.png`,
+        label: 'Obj_Rim_T0A',
+        value: "Obj_Rim_T0A",
         price: 0
       },
       {
-        src: `${process.env.PUBLIC_URL}/wheels/model_s/model_s_wheel_2.png`,
-        label: '21" Sonic Carbon Twin Turbine Wheels',
-        value: "wheel_2",
+        src: `${process.env.PUBLIC_URL}/aventador/Render_Tyre_0B.png`,
+        label: 'Obj_Rim_T0B',
+        value: 'Obj_Rim_T0B',
         price: 4500
       }
     ],
@@ -88,6 +95,7 @@ export const models = [
     key: 'x',
     name: "Model X",
     colors: colors,
+    wheelColor: wheelColor,
     wheels: [
       {
         src: `${process.env.PUBLIC_URL}/wheels/model_x/model_x_wheel_1.png`,
@@ -136,6 +144,7 @@ export const models = [
     key: 'y',
     name: "Model Y",
     colors: colors,
+    wheelColor: wheelColor,
     wheels: [
       {
         src: `${process.env.PUBLIC_URL}/wheels/model_y/model_y_wheel_1.png`,
@@ -189,7 +198,8 @@ export const initialConfig = {
     car_type: "long_range_plus",
     model: "s",
     color: "#1b76bc",
-    wheels: "wheel_1",
+    wheels: 'Obj_Rim_T0A',
+    wheelColor: '#000000',
     interior_color: "all_black"
   },
   'x': {
@@ -197,6 +207,7 @@ export const initialConfig = {
     model: "x",
     color: "#1b76bc",
     wheels: "wheel_1",
+    wheelColor: '#000000',
     interior_color: "all_black",
     interior_layout: "five_seat"
   },
@@ -205,6 +216,7 @@ export const initialConfig = {
     model: "y",
     color: "#1b76bc",
     wheels: "wheel_1",
+    wheelColor: '#000000',
     interior_color: "all_black",
     interior_layout: "five_seat"
   }

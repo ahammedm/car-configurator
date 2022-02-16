@@ -10,11 +10,25 @@ const Car = ({ config }) => {
 	return (
 		<div className="App">
 			<Canvas className="canvas" camera={{ position: [-13, 8, 15] }}>
-				<OrbitControls enableZoom={false} />
+				<OrbitControls
+					enablePan={false}
+					enableZoom={false}
+					enableDamping={true}
+					minPolarAngle={0.75}
+					maxPolarAngle={1.6}
+					dampingFactor={0.07}
+					rotateSpeed={0.30}
+					autoRotate={true}
+					autoRotateSpeed={0.57}
+				/>
 				<ambientLight intensity={0.5} />
 				<pointLight position={[10, 10, 10]} />
 				<Suspense fallback={null}>
-					<ModelDraco bodyColor={config.color} />
+					<ModelDraco
+						bodyColor={config.color}
+						wheels={config.wheels}
+						wheelColor={config.wheelColor}
+					/>
 					<Environment files="/royal_esplanade_1k.hdr" />
 				</Suspense>
 			</Canvas>

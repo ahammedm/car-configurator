@@ -71,6 +71,12 @@ class App extends React.Component {
             type: "image",
             prop: "wheels",
             options: this.selectedModel?.wheels ?? []
+          },
+          {
+            label: "Select wheel color",
+            type: "color",
+            prop: "wheelColor",
+            options: this.selectedModel?.wheelColor ?? []
           }
         ]
       },

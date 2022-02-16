@@ -2,7 +2,7 @@ import React, { useRef, useMemo } from 'react'
 import { Mesh } from 'three';
 import { useGLTF } from '@react-three/drei'
 
-export default function Model({ bodyColor, ...props }) {
+export default function Model({ bodyColor, wheels, wheelColor, ...props }) {
   const group = useRef()
   const { nodes, materials, scene } = useGLTF('/modelDraco.gltf')
   useMemo(() => scene.traverse(obj => {
@@ -11,6 +11,7 @@ export default function Model({ bodyColor, ...props }) {
       //Set Color - Body
       // if (obj.material.name === 'Mt_Body') console.log(obj.name, 'Mt_Body')
       // if (obj.material.name === 'Mt_MirrorCover') console.log(obj.name, 'Mt_MirrorCover')
+      if (obj.material.name === 'Mt_Interior_Black') console.log(obj.name, 'Mt_Interior_Black')
       // if (obj.material.name === 'Mt_AlloyWheels')  console.log(obj.name, 'Mt_AlloyWheels')
       // if (obj.material.name === 'Mt_BrakeCaliper')  console.log(obj.name, 'Mt_BrakeCaliper')
       // if (obj.material.name === 'Mt_Shadow_Plane')  console.log(obj.name, 'Mt_Shadow_Plane')
@@ -229,6 +230,7 @@ export default function Model({ bodyColor, ...props }) {
           material={nodes.Obj_RoofFrame.material}
           position={[0, -0.04, 0]}
           rotation={[Math.PI / 2, 0, 0]}
+          material-color={bodyColor}
         />
         <group position={[0, -0.04, 0]} rotation={[Math.PI / 2, 0, 0]}>
           <mesh geometry={nodes.Mesh_Running_Board.geometry} material={nodes.Mesh_Running_Board.material} material-color={bodyColor} />
@@ -366,18 +368,21 @@ export default function Model({ bodyColor, ...props }) {
             material={nodes.Obj_DiscRotor_FL.material}
             position={[0, 0, 0.05]}
             rotation={[0, -0.02, 0]}>
-            <group position={[0, 0, -0.05]} rotation={[Math.PI, -0.02, Math.PI]}>
-              <mesh geometry={nodes.Mesh_Rim_T0A_FL.geometry} material={nodes.Mesh_Rim_T0A_FL.material} />
-              <mesh geometry={nodes.Mesh_Rim_T0A_FL_1.geometry} material={nodes.Mesh_Rim_T0A_FL_1.material} />
-              <mesh geometry={nodes.Mesh_Rim_T0A_FL_2.geometry} material={nodes.Mesh_Rim_T0A_FL_2.material} />
-              <mesh geometry={nodes.Mesh_Rim_T0A_FL_3.geometry} material={nodes.Mesh_Rim_T0A_FL_3.material} />
-            </group>
-            <group position={[0, 0, -0.04]} rotation={[0, 0.02, 0]}>
-              <mesh geometry={nodes.Mesh_Rim_T0B_FL.geometry} material={nodes.Mesh_Rim_T0B_FL.material} />
-              <mesh geometry={nodes.Mesh_Rim_T0B_FL_1.geometry} material={nodes.Mesh_Rim_T0B_FL_1.material} />
-              <mesh geometry={nodes.Mesh_Rim_T0B_FL_2.geometry} material={nodes.Mesh_Rim_T0B_FL_2.material} />
-              <mesh geometry={nodes.Mesh_Rim_T0B_FL_3.geometry} material={nodes.Mesh_Rim_T0B_FL_3.material} />
-            </group>
+            {wheels === 'Obj_Rim_T0A' ? (
+              <group position={[0, 0, -0.05]} rotation={[Math.PI, -0.02, Math.PI]}>
+                <mesh geometry={nodes.Mesh_Rim_T0A_FL.geometry} material={nodes.Mesh_Rim_T0A_FL.material} material-color={wheelColor} />
+                <mesh geometry={nodes.Mesh_Rim_T0A_FL_1.geometry} material={nodes.Mesh_Rim_T0A_FL_1.material} />
+                <mesh geometry={nodes.Mesh_Rim_T0A_FL_2.geometry} material={nodes.Mesh_Rim_T0A_FL_2.material} />
+                <mesh geometry={nodes.Mesh_Rim_T0A_FL_3.geometry} material={nodes.Mesh_Rim_T0A_FL_3.material} />
+              </group>
+            ) : (
+              <group position={[0, 0, -0.04]} rotation={[0, 0.02, 0]}>
+                <mesh geometry={nodes.Mesh_Rim_T0B_FL.geometry} material={nodes.Mesh_Rim_T0B_FL.material} material-color={wheelColor} />
+                <mesh geometry={nodes.Mesh_Rim_T0B_FL_1.geometry} material={nodes.Mesh_Rim_T0B_FL_1.material} />
+                <mesh geometry={nodes.Mesh_Rim_T0B_FL_2.geometry} material={nodes.Mesh_Rim_T0B_FL_2.material} />
+                <mesh geometry={nodes.Mesh_Rim_T0B_FL_3.geometry} material={nodes.Mesh_Rim_T0B_FL_3.material} />
+              </group>
+            )}
             <mesh
               geometry={nodes.Obj_Tyre_FL.geometry}
               material={nodes.Obj_Tyre_FL.material}
@@ -400,18 +405,21 @@ export default function Model({ bodyColor, ...props }) {
             material={nodes.Obj_DiscRotor_FR.material}
             position={[0, 0, 0.05]}
             rotation={[0, -0.02, 0]}>
-            <group position={[0, 0, -0.05]} rotation={[Math.PI, -0.02, Math.PI]}>
-              <mesh geometry={nodes.Mesh_Rim_T0A_FR.geometry} material={nodes.Mesh_Rim_T0A_FR.material} />
-              <mesh geometry={nodes.Mesh_Rim_T0A_FR_1.geometry} material={nodes.Mesh_Rim_T0A_FR_1.material} />
-              <mesh geometry={nodes.Mesh_Rim_T0A_FR_2.geometry} material={nodes.Mesh_Rim_T0A_FR_2.material} />
-              <mesh geometry={nodes.Mesh_Rim_T0A_FR_3.geometry} material={nodes.Mesh_Rim_T0A_FR_3.material} />
-            </group>
-            <group position={[0, 0, -0.04]} rotation={[0, 0.02, 0]}>
-              <mesh geometry={nodes.Mesh_Rim_T0B_FR.geometry} material={nodes.Mesh_Rim_T0B_FR.material} />
-              <mesh geometry={nodes.Mesh_Rim_T0B_FR_1.geometry} material={nodes.Mesh_Rim_T0B_FR_1.material} />
-              <mesh geometry={nodes.Mesh_Rim_T0B_FR_2.geometry} material={nodes.Mesh_Rim_T0B_FR_2.material} />
-              <mesh geometry={nodes.Mesh_Rim_T0B_FR_3.geometry} material={nodes.Mesh_Rim_T0B_FR_3.material} />
-            </group>
+            {wheels === 'Obj_Rim_T0A' ? (
+              <group position={[0, 0, -0.05]} rotation={[Math.PI, -0.02, Math.PI]}>
+                <mesh geometry={nodes.Mesh_Rim_T0A_FR.geometry} material={nodes.Mesh_Rim_T0A_FR.material} material-color={wheelColor} />
+                <mesh geometry={nodes.Mesh_Rim_T0A_FR_1.geometry} material={nodes.Mesh_Rim_T0A_FR_1.material} />
+                <mesh geometry={nodes.Mesh_Rim_T0A_FR_2.geometry} material={nodes.Mesh_Rim_T0A_FR_2.material} />
+                <mesh geometry={nodes.Mesh_Rim_T0A_FR_3.geometry} material={nodes.Mesh_Rim_T0A_FR_3.material} />
+              </group>
+            ) : (
+              <group position={[0, 0, -0.04]} rotation={[0, 0.02, 0]}>
+                <mesh geometry={nodes.Mesh_Rim_T0B_FR.geometry} material={nodes.Mesh_Rim_T0B_FR.material} material-color={wheelColor} />
+                <mesh geometry={nodes.Mesh_Rim_T0B_FR_1.geometry} material={nodes.Mesh_Rim_T0B_FR_1.material} />
+                <mesh geometry={nodes.Mesh_Rim_T0B_FR_2.geometry} material={nodes.Mesh_Rim_T0B_FR_2.material} />
+                <mesh geometry={nodes.Mesh_Rim_T0B_FR_3.geometry} material={nodes.Mesh_Rim_T0B_FR_3.material} />
+              </group>
+            )}
             <mesh
               geometry={nodes.Obj_Tyre_FR.geometry}
               material={nodes.Obj_Tyre_FR.material}
@@ -433,18 +441,21 @@ export default function Model({ bodyColor, ...props }) {
             material={nodes.Obj_DiscRotor_RL.material}
             position={[0, 0, 0.05]}
             rotation={[0, -0.02, 0]}>
-            <group position={[0, 0, -0.05]} rotation={[Math.PI, -0.02, Math.PI]}>
-              <mesh geometry={nodes.Mesh_Rim_T0A_RL.geometry} material={nodes.Mesh_Rim_T0A_RL.material} />
-              <mesh geometry={nodes.Mesh_Rim_T0A_RL_1.geometry} material={nodes.Mesh_Rim_T0A_RL_1.material} />
-              <mesh geometry={nodes.Mesh_Rim_T0A_RL_2.geometry} material={nodes.Mesh_Rim_T0A_RL_2.material} />
-              <mesh geometry={nodes.Mesh_Rim_T0A_RL_3.geometry} material={nodes.Mesh_Rim_T0A_RL_3.material} />
-            </group>
-            <group position={[0, 0, -0.04]} rotation={[0, 0.02, 0]}>
-              <mesh geometry={nodes.Mesh_Rim_T0B_RL.geometry} material={nodes.Mesh_Rim_T0B_RL.material} />
-              <mesh geometry={nodes.Mesh_Rim_T0B_RL_1.geometry} material={nodes.Mesh_Rim_T0B_RL_1.material} />
-              <mesh geometry={nodes.Mesh_Rim_T0B_RL_2.geometry} material={nodes.Mesh_Rim_T0B_RL_2.material} />
-              <mesh geometry={nodes.Mesh_Rim_T0B_RL_3.geometry} material={nodes.Mesh_Rim_T0B_RL_3.material} />
-            </group>
+            {wheels === 'Obj_Rim_T0A' ? (
+              <group position={[0, 0, -0.05]} rotation={[Math.PI, -0.02, Math.PI]}>
+                <mesh geometry={nodes.Mesh_Rim_T0A_RL.geometry} material={nodes.Mesh_Rim_T0A_RL.material} material-color={wheelColor} />
+                <mesh geometry={nodes.Mesh_Rim_T0A_RL_1.geometry} material={nodes.Mesh_Rim_T0A_RL_1.material} />
+                <mesh geometry={nodes.Mesh_Rim_T0A_RL_2.geometry} material={nodes.Mesh_Rim_T0A_RL_2.material} />
+                <mesh geometry={nodes.Mesh_Rim_T0A_RL_3.geometry} material={nodes.Mesh_Rim_T0A_RL_3.material} />
+              </group>
+            ) : (
+              <group position={[0, 0, -0.04]} rotation={[0, 0.02, 0]}>
+                <mesh geometry={nodes.Mesh_Rim_T0B_RL.geometry} material={nodes.Mesh_Rim_T0B_RL.material} material-color={wheelColor} />
+                <mesh geometry={nodes.Mesh_Rim_T0B_RL_1.geometry} material={nodes.Mesh_Rim_T0B_RL_1.material} />
+                <mesh geometry={nodes.Mesh_Rim_T0B_RL_2.geometry} material={nodes.Mesh_Rim_T0B_RL_2.material} />
+                <mesh geometry={nodes.Mesh_Rim_T0B_RL_3.geometry} material={nodes.Mesh_Rim_T0B_RL_3.material} />
+              </group>
+            )}
             <mesh
               geometry={nodes.Obj_Tyre_RL.geometry}
               material={nodes.Obj_Tyre_RL.material}
@@ -467,18 +478,21 @@ export default function Model({ bodyColor, ...props }) {
             material={nodes.Obj_DiscRotor_RR.material}
             position={[0, 0, 0.05]}
             rotation={[0, -0.02, 0]}>
-            <group position={[0, 0, -0.05]} rotation={[Math.PI, -0.02, Math.PI]}>
-              <mesh geometry={nodes.Mesh_Rim_T0A_RR.geometry} material={nodes.Mesh_Rim_T0A_RR.material} />
-              <mesh geometry={nodes.Mesh_Rim_T0A_RR_1.geometry} material={nodes.Mesh_Rim_T0A_RR_1.material} />
-              <mesh geometry={nodes.Mesh_Rim_T0A_RR_2.geometry} material={nodes.Mesh_Rim_T0A_RR_2.material} />
-              <mesh geometry={nodes.Mesh_Rim_T0A_RR_3.geometry} material={nodes.Mesh_Rim_T0A_RR_3.material} />
-            </group>
-            <group position={[0, 0, -0.04]} rotation={[0, 0.02, 0]}>
-              <mesh geometry={nodes.Mesh_Rim_T0B_RR.geometry} material={nodes.Mesh_Rim_T0B_RR.material} />
-              <mesh geometry={nodes.Mesh_Rim_T0B_RR_1.geometry} material={nodes.Mesh_Rim_T0B_RR_1.material} />
-              <mesh geometry={nodes.Mesh_Rim_T0B_RR_2.geometry} material={nodes.Mesh_Rim_T0B_RR_2.material} />
-              <mesh geometry={nodes.Mesh_Rim_T0B_RR_3.geometry} material={nodes.Mesh_Rim_T0B_RR_3.material} />
-            </group>
+            {wheels === 'Obj_Rim_T0A' ? (
+              <group position={[0, 0, -0.05]} rotation={[Math.PI, -0.02, Math.PI]}>
+                <mesh geometry={nodes.Mesh_Rim_T0A_RR.geometry} material={nodes.Mesh_Rim_T0A_RR.material} material-color={wheelColor} />
+                <mesh geometry={nodes.Mesh_Rim_T0A_RR_1.geometry} material={nodes.Mesh_Rim_T0A_RR_1.material} />
+                <mesh geometry={nodes.Mesh_Rim_T0A_RR_2.geometry} material={nodes.Mesh_Rim_T0A_RR_2.material} />
+                <mesh geometry={nodes.Mesh_Rim_T0A_RR_3.geometry} material={nodes.Mesh_Rim_T0A_RR_3.material} />
+              </group>
+            ) : (
+              <group position={[0, 0, -0.04]} rotation={[0, 0.02, 0]}>
+                <mesh geometry={nodes.Mesh_Rim_T0B_RR.geometry} material={nodes.Mesh_Rim_T0B_RR.material} material-color={wheelColor} />
+                <mesh geometry={nodes.Mesh_Rim_T0B_RR_1.geometry} material={nodes.Mesh_Rim_T0B_RR_1.material} />
+                <mesh geometry={nodes.Mesh_Rim_T0B_RR_2.geometry} material={nodes.Mesh_Rim_T0B_RR_2.material} />
+                <mesh geometry={nodes.Mesh_Rim_T0B_RR_3.geometry} material={nodes.Mesh_Rim_T0B_RR_3.material} />
+              </group>
+            )}
             <mesh
               geometry={nodes.Obj_Tyre_RR.geometry}
               material={nodes.Obj_Tyre_RR.material}
