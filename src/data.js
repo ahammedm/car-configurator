@@ -98,16 +98,16 @@ export const models = [
     wheelColor: wheelColor,
     wheels: [
       {
-        src: `${process.env.PUBLIC_URL}/wheels/model_x/model_x_wheel_1.png`,
-        label: '20" Silver Wheels',
-        value: "wheel_1",
+        src: `${process.env.PUBLIC_URL}/aventador/Render_Tyre_0A.png`,
+        label: 'Obj_Rim_T0A',
+        value: "Obj_Rim_T0A",
         price: 0
       },
       {
-        src: `${process.env.PUBLIC_URL}/wheels/model_x/model_x_wheel_2.png`,
-        label: '22" Onyx Black Wheels',
-        value: "wheel_2",
-        price: 5500
+        src: `${process.env.PUBLIC_URL}/aventador/Render_Tyre_0B.png`,
+        label: 'Obj_Rim_T0B',
+        value: 'Obj_Rim_T0B',
+        price: 4500
       }
     ],
     types: [
@@ -147,16 +147,16 @@ export const models = [
     wheelColor: wheelColor,
     wheels: [
       {
-        src: `${process.env.PUBLIC_URL}/wheels/model_y/model_y_wheel_1.png`,
-        label: '19’’ Gemini Wheels',
-        value: "wheel_1",
+        src: `${process.env.PUBLIC_URL}/aventador/Render_Tyre_0A.png`,
+        label: 'Obj_Rim_T0A',
+        value: "Obj_Rim_T0A",
         price: 0
       },
       {
-        src: `${process.env.PUBLIC_URL}/wheels/model_y/model_y_wheel_2.png`,
-        label: '20’’ Induction Wheels',
-        value: "wheel_2",
-        price: 2000
+        src: `${process.env.PUBLIC_URL}/aventador/Render_Tyre_0B.png`,
+        label: 'Obj_Rim_T0B',
+        value: 'Obj_Rim_T0B',
+        price: 4500
       }
     ],
     types: [
@@ -206,7 +206,7 @@ export const initialConfig = {
     car_type: "long_range_plus",
     model: "x",
     color: "#1b76bc",
-    wheels: "wheel_1",
+    wheels: 'Obj_Rim_T0A',
     wheelColor: '#000000',
     interior_color: "all_black",
     interior_layout: "five_seat"
@@ -215,7 +215,7 @@ export const initialConfig = {
     car_type: "long_range",
     model: "y",
     color: "#1b76bc",
-    wheels: "wheel_1",
+    wheels: 'Obj_Rim_T0A',
     wheelColor: '#000000',
     interior_color: "all_black",
     interior_layout: "five_seat"
