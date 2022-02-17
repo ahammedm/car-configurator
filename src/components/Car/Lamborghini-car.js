@@ -4,7 +4,7 @@ import { useGLTF } from '@react-three/drei'
 
 export default function Model({ bodyColor, wheels, wheelColor, ...props }) {
   const group = useRef()
-  const { nodes, materials, scene } = useGLTF('/modelDraco.gltf')
+  const { nodes, materials, scene } = useGLTF('/Lamborghini-car.gltf')
   useMemo(() => scene.traverse(obj => {
     if (obj instanceof Mesh) {
 
@@ -524,4 +524,4 @@ export default function Model({ bodyColor, wheels, wheelColor, ...props }) {
   )
 }
 
-useGLTF.preload('/modelDraco.gltf')
+useGLTF.preload('/Lamborghini-car.gltf')

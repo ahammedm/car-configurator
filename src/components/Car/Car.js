@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import "./Car.css";
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, Environment } from '@react-three/drei';
-import ModelDraco from './ModelDraco';
+import LamborghiniCar from './Lamborghini-car';
 
 const Car = ({ config }) => {
 
@@ -24,7 +24,7 @@ const Car = ({ config }) => {
 				<ambientLight intensity={0.5} />
 				<pointLight position={[10, 10, 10]} />
 				<Suspense fallback={null}>
-					<ModelDraco
+					<LamborghiniCar
 						bodyColor={config.color}
 						wheels={config.wheels}
 						wheelColor={config.wheelColor}
